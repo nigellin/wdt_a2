@@ -1,0 +1,48 @@
+﻿@model Hospital.Models.Search
+@{
+   ViewBag.Title = "Search Patient";
+}
+<!--header-->
+<h2 class="page-header">
+	<small>Search</small> Patient
+</h2>
+<!--search functionality to search the database for exisitng patient -->
+<fieldset>
+	@using(Ajax.BeginForm(new AjaxOptions {
+		InsertionMode= InsertionMode.Replace,
+		UpdateTargetId= "result",
+		Url= "SearchResult"
+	})) {
+
+		@Html.RadioButtonFor(model => model.Type, Model.Types[0], new { @checked= true })
+		<span>&nbsp;</span>
+		@Html.Label(Model.Types[0])
+
+		<span>&nbsp;|&nbsp;</span>
+
+		@Html.RadioButtonFor(model => model.Type, Model.Types[1]);
+		<span>&nbsp;</span>
+		@Html.Label(Model.Types[1]);
+
+		<span>&nbsp;|&nbsp;</span>
+
+		@Html.RadioButtonFor(model => model.Type, Model.Types[2]);
+		<span>&nbsp;</span>
+		@Html.Label(Model.Types[2]);
+
+		<span>&nbsp;|&nbsp;</span>
+
+		@Html.RadioButtonFor(model => model.Type, Model.Types[3]);
+		<span>&nbsp;</span>
+		@Html.Label(Model.Types[3]);
+
+		<br />
+
+		@Html.LabelFor(model => model.Keyword)
+		<span>&nbsp;</span>
+		@Html.EditorFor(model => model.Keyword)
+		<input type="submit" value="Search" />
+	}
+
+	<div id="result"></div>
+</fieldset>

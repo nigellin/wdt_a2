@@ -1,0 +1,123 @@
+﻿@model Hospital.Models.Visit
+@{
+	ViewBag.Title = "Discharge";
+}
+
+<h2 class="page-header">Discharge &amp; Pay</h2>
+
+@if(Model == null) {
+	<p>@Model.Patient.Name currently not in the hospital.</p>
+} else {
+	<div>
+		<dl class="dl-horizontal text-med">
+			<dt>@Html.DisplayNameFor(model => model.Patient.Id)</dt>
+			<dd>@Html.DisplayFor(model => model.Patient.Id)</dd>
+
+			<dt>@Html.DisplayNameFor(model => model.Patient.Name)</dt>
+			<dd>@Html.DisplayFor(model => model.Patient.Name)</dd>
+
+			<dt>@Html.DisplayNameFor(model => model.PatientType)</dt>
+			<dd>@Html.DisplayName(Model.PatientType? "In": "Out")</dd>
+
+			<dt>@Html.DisplayNameFor(model => model.Patient.Phone)</dt>
+			<dd>@Html.DisplayFor(model => model.Patient.Phone)</dd>
+
+			<dt><br /></dt>
+			<dd><br /></dd>
+
+			<dt>@Html.DisplayNameFor(model => model.DateOfVisit)</dt>
+			<dd>@Html.DisplayFor(model => model.DateOfVisit)</dd>
+
+			<dt>@Html.DisplayNameFor(model => model.Patient.DateOfRegistration)</dt>
+			<dd>@Html.DisplayFor(model => model.Patient.DateOfRegistration)</dd>
+
+			<dt><br /></dt>
+			<dd><br /></dd>
+
+			<dt>@Html.DisplayNameFor(model => model.Symptoms)</dt>
+			<dd>@Html.DisplayFor(model => model.Symptoms)</dd>
+
+			<dt>@Html.DisplayNameFor(model => model.Disease)</dt>
+			<dd>@Html.DisplayFor(model => model.Disease)</dd>
+
+			<dt>@Html.DisplayNameFor(model => model.Treatment)</dt>
+			<dd>@Html.DisplayFor(model => model.Treatment)</dd>
+		</dl>
+	</div>
+
+
+	<div>
+		<p style="font-size:30px"></p>
+	</div>
+	<div>
+		<table class="table table-striped">
+			<tr>
+				<th>Assigned Doctor</th>
+				<th>Assigned Bed</th>
+			</tr>
+			<tr>
+				<td>
+					(@Html.DisplayFor(model => model.DoctorId))&nbsp;
+					@Html.DisplayFor(model => model.Doctor.Name)
+				</td>
+				<td>
+					(@Html.DisplayFor(model => model.BedId))&nbsp;
+					@Html.DisplayName(Model.BedId!= null? Model.Bed.Name: "n/a")
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><br /></td>
+			</tr>
+			<tr>
+				<th></th>
+				<th>Price</th>
+			</tr>
+			<tr>
+				<td>Treatment Cost</td>
+				<td>$@ViewBag.TreatmentAmount</td>
+			</tr>
+			<tr>
+				<td>Cost of Stay</td>
+				<td>$@ViewBag.BedRate</td>
+			</tr>
+			<tr style="font-weight: bold">
+				<td>Total Amount</td>
+				<td><u>$@ViewBag.Total</u></td>
+			</tr>
+		</table>
+
+
+		@using(Html.BeginForm("Discharge", "Patient", FormMethod.Post, new { @id= "myform" })) {
+			@Html.AntiForgeryToken()
+			<span class="col-md-3">
+				<input class="form-control" type="number" id="field" name="field" />
+			</span>
+			<input type="submit" value="Pay by Credit Card" class="btn btn-primary" />
+		}
+
+		<br />
+
+		@Html.ActionLink("Back to List", "DischargeList")
+		&nbsp;|&nbsp;
+		@Html.ActionLink("To Visit List", "Index", "Visit")
+		&nbsp;|&nbsp;
+		@Html.ActionLink("To Patient List", "Index")
+
+		<link rel="stylesheet" href="http://jquery.bassistance.de/validate/demo/site-demos.css">
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
+		<script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
+
+		<script>
+			$("#myform").validate({
+				rules: {
+					field: {
+						required: true,
+						creditcard: true
+					}
+				}
+			});
+		</script>
+
+	</div>
+}

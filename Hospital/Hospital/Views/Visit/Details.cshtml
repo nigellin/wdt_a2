@@ -1,0 +1,18 @@
+﻿@model Hospital.Models.Visit
+
+@{
+    ViewBag.Title = "View Visit Details";
+	ViewBag.Action= "View";
+	ViewBag.HeaderText= Html.DisplayNameFor(model=> model.Id)+ " "+ Html.DisplayFor(model=> model.Id);
+}
+
+@Html.Partial("_Details")
+
+<div class="btn-group col-sm-offset-1">
+	@Html.ActionLink("Edit", "Edit", new { id=Model.Id }, new { @class="btn btn-primary" })
+	@Html.ActionLink("Delete", "Delete", new { id= Model.Id }, new { @class="btn btn-danger" })
+</div>
+
+<br />
+<br />
+@Html.ActionLink("Back to List", "Index")

@@ -1,0 +1,18 @@
+﻿@model Hospital.Models.Doctor
+
+<!--ViewBag tags that passes data from controller to view-->
+@{
+    ViewBag.Title		= "Create New Doctor";
+	ViewBag.HeaderText	= "Doctor";
+	ViewBag.Action= ViewBag.ButtonValue= "Create";
+}
+
+<!--a partial view is being called from _Form-->
+@Html.Partial("_Form")
+<!--creating a link to index page with text back to list-->
+@Html.ActionLink("Back to List", "Index")
+
+<!--using jequery script form the following path-->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

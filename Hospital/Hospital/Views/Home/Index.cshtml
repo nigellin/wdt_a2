@@ -1,0 +1,35 @@
+﻿<!--navigation bar is set in the _layout.cshtml page to create it site-wide-->
+@{
+	ViewBag.Title = "iCare Home";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--home page of the website that is styled by bootstrap framwork-->
+@section head{
+	<div class="jumbotron">
+		<div class="container">
+			<h1>
+                <!--our hospitals logo -->
+				<img src="~/Content/logo.png" alt="icare logo" class="img-rounded" width="120" height="75" />
+				Hospital!
+			</h1>
+			<p>Our hospital is one of the world leaders in quality staff and medical success rates. Nominated for the fourth time for medical award by the CCSA for outstanding service, our hospital excels where others lack.</p>
+		</div>
+	</div>
+}
+
+<!--information about our hospital-->
+<div class="row">
+	<div class="col-md-4">
+		<h2>About Us</h2>
+		<p>Our hospital for the last 10 years have been world leaders in finding cures and reasearch in the areas of bio medecine and labrorty reasearch. We have world class docotors which have access to the latest technology to provide the best diagnosis. </p>
+	</div>
+	<div class="col-md-4">
+		<h2>Doctors/ Specalisation</h2>
+		<p>Each of our docotors are highly skilled and are chosen based on merit. Each and every docotor must satisfy the international standard code of ethics in order to practise at our hospital. To see the complete list of docotrs please follow the link. </p>
+	</div>
+	<div class="col-md-4">
+		<h2>Contact Us</h2>
+		<p>Our hospital runs 7 days a week 365 days of the year. Our emergency department is always on standby so patients get treated as soon as possible.</p>
+	</div>
+</div>

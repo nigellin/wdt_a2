@@ -1,0 +1,23 @@
+﻿@model Hospital.Models.Bed
+
+<!--viewBag that allows data to be passed from controller to view-->
+@{
+	ViewBag.Title = "Delete Bed";
+	ViewBag.Action= "Delete";
+}
+
+<!--calls the partial view from the _Details file-->
+@Html.Partial("_Details")
+
+<!--creating a delete button with style using bootstrap css-->
+@using(Html.BeginForm()) {
+	@Html.AntiForgeryToken()
+	<span class="label label-danger">Are you sure you want to delete this?</span>
+	<input type="submit" value="Yes" class="btn btn-danger"/>	
+}
+
+<br/>
+<!--creating links backto Details and back to list-->>
+@Html.ActionLink("Back to Details", "Details", new { id= Model.Id })
+|
+@Html.ActionLink("Back to List", "Index")

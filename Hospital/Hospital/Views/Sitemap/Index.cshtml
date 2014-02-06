@@ -1,0 +1,42 @@
+﻿<!--using the _layout style for this page-->
+@{
+    ViewBag.Title = "iCare Sitemap page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--creating a table that lists all of our web pages that are structures hirarcically-->
+@Html.ActionLink("Patient", "Index", "Patient")
+<ul>
+	<li>@Html.ActionLink("Create", "Create", "Patient")</li>
+	<li>@Html.ActionLink("Delete", "Index", "Patient")</li>
+	<li>@Html.ActionLink("Details", "Index", "Patient")</li>
+	<li>@Html.ActionLink("Edit", "Index", "Patient")</li>
+	<li>@Html.ActionLink("Search", "Search", "Patient")</li>
+</ul>
+
+
+<p>@Html.ActionLink("Doctor", "Index", "Doctor")</p>
+<ul>
+	<li>@Html.ActionLink("Create", "Create", "Doctor")</li>
+	<li>@Html.ActionLink("Delete", "Index", "Doctor")</li>
+	<li>@Html.ActionLink("Details", "Index", "Doctor")</li>
+	<li>@Html.ActionLink("Edit", "Index", "Doctor")</li>
+</ul>
+
+
+<p>@Html.ActionLink("Bed", "Index", "Bed")</p>
+<ul>
+	<li>@Html.ActionLink("Create", "Create", "Bed")</li>
+	<li>@Html.ActionLink("Delete", "Index", "Bed")</li>
+	<li>@Html.ActionLink("Details", "Index", "Bed")</li>
+	<li>@Html.ActionLink("Edit", "Index", "Bed")</li>
+</ul>
+
+<p>@Html.ActionLink("Visit", "Index", "Visit")</p>
+<ul>
+	<li>@Html.ActionLink("Create", "Create", "Visit")</li>
+	<li>@Html.ActionLink("Delete", "Index", "Visit")</li>
+	<li>@Html.ActionLink("Detials", "Index", "Visit")</li>
+	<li>@Html.ActionLink("Edit", "Index", "Visit")</li>
+	<li>@Html.ActionLink("Search", "Search", "Visit")</li>
+</ul>

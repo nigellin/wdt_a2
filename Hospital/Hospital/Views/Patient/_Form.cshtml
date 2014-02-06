@@ -1,0 +1,62 @@
+﻿@model Hospital.Models.Patient
+
+@{
+	string action= ViewBag.Action;
+	string buttonValue= ViewBag.ButtonValue;
+}
+
+<!--header is being created-->
+<h2 class="page-header">
+	<small>@ViewBag.Action</small>
+	@ViewBag.HeaderText
+</h2>
+
+<!--the display is being created for the form that is associated with the patients-->
+@using(@Html.BeginForm(action, "Patient", FormMethod.Post, new { @role= "form", @class= "form-signin form-horizontal" })) {
+	@Html.AntiForgeryToken()
+	<div class="form-group">
+		@Html.LabelFor(model => model.Name, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.Name, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Name, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.Address, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.Address, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Address, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+	<!--each patient info is being created as a form element and has adequete validation checking-->
+	<div class="form-group">
+		@Html.LabelFor(model => model.DateOfBirth, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.DateOfBirth, new { @class= "form-control"})
+			@Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+	
+	<div class="form-group">
+		@Html.LabelFor(model => model.Phone, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.Phone, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Phone, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+	
+	<div class="form-group">
+		@Html.LabelFor(model => model.EmergencyContact, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.EmergencyContact, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.EmergencyContact, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-md-6 col-sm-offset-2">
+			<input type="submit" value="@buttonValue" class="btn btn-primary" />
+			@Html.ValidationMessage("message", new { @class= "alert-danger" })
+		</div>
+	</div>
+}

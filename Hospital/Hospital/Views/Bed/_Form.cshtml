@@ -1,0 +1,40 @@
+﻿@model Hospital.Models.Bed
+
+<!--heading two with a class selector to add style -->
+<h2 class="page-header">
+	<small>@ViewBag.Action</small>
+	@ViewBag.HeaderText
+</h2>
+
+@using(@Html.BeginForm((string)@ViewBag.Action, "Bed", FormMethod.Post, new { @role= "form", @class= "form-signin form-horizontal" })) {
+	@Html.AntiForgeryToken()
+	<div class="form-group">
+		@Html.LabelFor(model => model.Name, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.Name, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Name, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.RatePerDay, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.RatePerDay, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.RatePerDay, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Type, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+			@Html.EditorFor(model => model.Type, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Type, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-6 col-sm-offset-2">
+			<input type="submit" value="@ViewBag.ButtonValue" class="btn btn-primary" />
+			@Html.ValidationMessage("message", new { @class= "alert-danger" })
+		</div>
+	</div>
+}

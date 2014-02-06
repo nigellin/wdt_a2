@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Hospital.Models.Visit>
+
+@{
+    ViewBag.Title = "Visit List";
+	
+}
+
+<h2 class="page-header">Visit List</h2>
+
+@Html.ActionLink("Assign", "Create", "Visit", null, new { @class="btn btn-primary btn-sm" })
+@Html.ActionLink("Search", "Search", "Visit", null, new { @class="btn btn-primary btn-sm" })
+<br />
+
+@Html.Partial("_List")

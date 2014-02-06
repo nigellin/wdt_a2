@@ -1,0 +1,23 @@
+﻿@model Hospital.Models.Patient
+
+<!--link and functionality to delte the patient -->
+@{
+    ViewBag.Title = "Delete Patient";
+	ViewBag.Action= "Delete";
+}
+
+<!--partial view being used-->
+@Html.Partial("_Details")
+
+@using(Html.BeginForm()) {
+	@Html.AntiForgeryToken()
+    <!--warning when deleting patient-->
+	<span class="label label-danger">Are you sure you want to delete this?</span>
+	<input type="submit" value="Yes" class="btn btn-danger" />
+}
+
+<br />
+<!--links for naivagtion-->
+@Html.ActionLink("Back to Details", "Details", new { id= Model.Id })
+|
+@Html.ActionLink("Back to List", "Index")

@@ -1,0 +1,43 @@
+﻿@model Hospital.Models.Search
+@{
+    ViewBag.Title = "Search_Visit";
+}
+
+<h2>Search Visit</h2>
+
+<fieldset>
+    <legend>Visit Filter</legend>
+    @using (Ajax.BeginForm(new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "result",
+        Url = "SearchResult"
+    }))
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.RadioButtonFor(model => model.Type, Model.Types[4], new { @checked = true })
+                    @Html.Label(Model.Types[4])
+                </td>
+                <td>
+                    @Html.RadioButtonFor(model => model.Type, Model.Types[5])
+                    @Html.Label(Model.Types[5])
+                </td>
+                <td>
+                    @Html.RadioButtonFor(model => model.Type, Model.Types[3])
+                    @Html.Label(Model.Types[3])
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    @Html.LabelFor(model => model.Keyword)
+                    @Html.EditorFor(model => model.Keyword)
+                    <input type="submit" value="Search" />
+                </td>
+            </tr>
+        </table>
+    }
+
+    <div id="result"></div>
+</fieldset>

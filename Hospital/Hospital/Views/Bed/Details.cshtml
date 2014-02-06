@@ -1,0 +1,22 @@
+﻿@model Hospital.Models.Bed
+
+<!--ViewBag elements allow the data to be passed from the controller to the view-->
+@{
+	ViewBag.Title = "View Bed Details";
+	ViewBag.Action= "View";
+	ViewBag.HeaderText= Html.DisplayNameFor(model => model.Id)+ " "+ Html.DisplayFor(model => model.Id);
+}
+
+<!-- gets the partial view from _Details file-->
+@Html.Partial("_Details")
+
+<div class="btn-group col-sm-offset-1">
+    <!--creating an edit and delete button that have functionality-->
+	@Html.ActionLink("Edit", "Edit",new { id=Model.Id }, new { @class="btn btn-primary" })
+	@Html.ActionLink("Delete", "Delete", new { id= Model.Id }, new { @class="btn btn-danger" })
+</div>
+
+<br/>
+<br/>
+<!--creating a link back to Index file with text Back to list-->
+@Html.ActionLink("Back to List", "Index")

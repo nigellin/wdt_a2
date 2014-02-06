@@ -1,0 +1,24 @@
+﻿@model Hospital.Models.Doctor
+
+<!--ViewBag elements allowing data to be accessed from controller to view-->
+@{
+    ViewBag.Title = "Delete Doctor";
+	ViewBag.Action= "Delete";
+}
+
+<!--using a partial view from the _Details file-->
+@Html.Partial("_Details")
+
+<!--Deleting a doctor details and also warning is give-->
+@using(Html.BeginForm()) {
+	@Html.AntiForgeryToken()
+	<span class="label label-danger">Are you sure you want to delete this?</span>
+    <!--being styled with twitter bootstrap-->
+	<input type="submit" value="Yes" class="btn btn-danger" />
+}
+
+<br />
+<!-- creating links that go to pages Details and Index-->
+@Html.ActionLink("Back to Details", "Details", new { id= Model.Id })
+|
+@Html.ActionLink("Back to List", "Index")

@@ -1,0 +1,19 @@
+﻿@model Hospital.Models.Visit
+
+@{
+    ViewBag.Title = "Delete Visit";
+	ViewBag.Action= "Delete";
+}
+
+@Html.Partial("_Details")
+
+@using(Html.BeginForm()) {
+	@Html.AntiForgeryToken()
+	<span class="label label-danger">Are you sure you want to delete this?</span>
+	<input type="submit" value="Yes" class="btn btn-danger" />
+}
+
+<br />
+@Html.ActionLink("Back to Details", "Details", new { id= Model.Id })
+|
+@Html.ActionLink("Back to List", "Index")

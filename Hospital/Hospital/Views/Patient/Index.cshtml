@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Hospital.Models.Patient>
+
+@{
+    ViewBag.Title = "Patient List";
+}
+
+@if(Request.RequestContext.RouteData.Values["action"].ToString()!= "DischargeList"){
+	<h2>Patient List</h2>
+	@Html.ActionLink("New", "Create", "Patient", null, new { @class="btn btn-primary btn-sm" })
+	<span>|</span>
+	@Html.ActionLink("Search", "Search", "Patient", null, new { @class="btn btn-primary btn-sm" })
+	
+	<br />
+}else{
+	<h2>Discharge List</h2>
+}
+
+
+@Html.Partial("_PatientList")

@@ -1,0 +1,18 @@
+﻿@model Hospital.Models.Visit
+
+@{
+    ViewBag.Title = "Assign New Visit";
+	ViewBag.Action= "Create";
+	ViewBag.ButtonValue= "Assign";
+	ViewBag.HeaderText= "Visit";
+}
+
+@Html.Partial("_Form")
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

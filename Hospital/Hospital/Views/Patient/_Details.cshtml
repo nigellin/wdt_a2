@@ -1,0 +1,29 @@
+﻿@model Hospital.Models.Patient
+
+<!--creating a header and styling it-->
+<h2 class="page-header">
+	<small>@ViewBag.Action</small>
+	@Html.DisplayNameFor(model => model.Id) @Html.DisplayFor(model => model.Id)
+</h2>
+
+<!--creating the view for the patients-->
+<!--the information such as name addres.. etc is being listed-->
+<dl class="dl-horizontal text-med">
+	<dt>@Html.DisplayNameFor(model => model.Name)</dt>
+	<dd>@Html.DisplayFor(model => model.Name)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Address)</dt>
+	<dd>@Html.DisplayFor(model => model.Address)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.DateOfBirth)</dt>
+	<dd>@Html.DisplayFor(model => model.DateOfBirth)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Phone)</dt>
+	<dd>@Html.DisplayFor(model => model.Phone)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.EmergencyContact)</dt>
+	<dd>@Html.DisplayFor(model => model.EmergencyContact)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.DateOfRegistration)</dt>
+	<dd>@Html.DisplayFor(model => model.DateOfRegistration)</dd>
+</dl>

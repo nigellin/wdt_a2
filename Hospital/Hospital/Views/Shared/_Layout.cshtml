@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+        <!--declaring all of the scripts and styles that bootstrap uses-->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>@ViewBag.Title</title>
+		@Styles.Render("~/Content/css")
+		@Scripts.Render("~/bundles/modernizr")
+		@Scripts.Render("~/bundles/jquery")
+
+        <!--defining the paths to the scripts that are being used-->
+		<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+		<link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<script src="~/Content/bootstrap/bootstrap.min.js"></script>
+	</head>
+<!--creating the navigation bar for the whole website-->
+<body>
+	<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				@Html.ActionLink("iCare", "Index", "Home", null, new { @class= "navbar-brand" })
+
+				<ul class="nav navbar-nav">
+					<li>
+						@Html.ActionLink("Home", "Index", "Home")
+					</li>
+                    <!--adding dropdown style to the navigation bar provided by bootstrap framework-->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								@Html.ActionLink("New", "Create", "Patient")
+							</li>
+							<li>
+								@Html.ActionLink("List", "Index", "Patient")
+							</li>
+							<li class="divider"></li>
+							<li>
+								@Html.ActionLink("Search", "Search", "Patient")
+							</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Doctor<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								@Html.ActionLink("New", "Create", "Doctor")
+							</li>
+							<li>
+								@Html.ActionLink("List", "Index", "Doctor")
+							</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bed<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								@Html.ActionLink("New", "Create", "Bed")
+							</li>
+							<li>
+								@Html.ActionLink("List", "Index", "Bed")
+							</li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Visit<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								@Html.ActionLink("Assign", "Create", "Visit")
+							</li>
+							<li>
+								@Html.ActionLink("List", "Index", "Visit")
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						@Html.ActionLink("Discharge", "DischargeList", "Patient")
+					</li>
+
+                    <li>
+                        <!--sitemap page-->
+                        @Html.ActionLink("Sitemap", "Index", "Sitemap")
+                    </li>
+
+				</ul>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					@if(Request.IsAuthenticated) {
+						<li>
+							@Html.Label("Hi, "+ @HttpContext.Current.User.Identity.Name, new { @class="navbar-text", @style="color: cornflowerblue" })
+						</li>
+                        <!-- login form provided here alson in the navigation bar-->
+						<li>
+							@Html.ActionLink("Logout", "Logout", "Account")
+						</li>
+					} else {
+						<li>
+							@Html.ActionLink("Login", "Login", "Account")
+						</li>
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		@RenderSection("head", false)
+		@RenderBody()
+
+		<hr />
+        <!--sitewide footer with group member names and reference to bootstrap being used-->
+		<footer>
+			<strong>&copy; Kiriti Kunapareddy, Nanxing Lin &amp; Chih-Hao Fang.</strong>
+			UI Styled by <u><i>Bootstrap</i></u> framework
+			<br />
+			<i>For RMIT academic purpose</i>
+		</footer>
+	</div>
+
+	@RenderSection("scripts", required : false)
+</body>
+</html>

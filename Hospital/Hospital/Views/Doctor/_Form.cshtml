@@ -1,0 +1,48 @@
+﻿@model Hospital.Models.Doctor
+
+<!-- creating a page header-->
+<h2 class="page-header">
+	<small>@ViewBag.Action</small>
+	@ViewBag.HeaderText
+</h2>
+
+<!--view for the docotor form -->
+@using(@Html.BeginForm((string)@ViewBag.Action, "Doctor", FormMethod.Post, new { @role= "form", @class= "form-signin form-horizontal" })) {
+	@Html.AntiForgeryToken()
+	<div class="form-group">
+		@Html.LabelFor(model => model.Name, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+            <!--doctors name credentials-->
+            <!--checking for validation errors-->
+			@Html.EditorFor(model => model.Name, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Name, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.Address, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+            <!--doctors address credentials-->
+            <!--checking for validation errors-->
+			@Html.EditorFor(model => model.Address, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Address, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Phone, new { @class= "col-md-2 control-label" })
+		<div class="col-md-8">
+            <!--doctors phone credentials-->
+            <!--checking for validation errors-->
+			@Html.EditorFor(model => model.Phone, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Phone, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-6 col-sm-offset-2">
+            <!--creating a submit button to accept doctor information-->
+			<input type="submit" value="@ViewBag.ButtonValue" class="btn btn-primary" />
+			@Html.ValidationMessage("message", new { @class= "alert-danger" })
+		</div>
+	</div>
+}

@@ -1,0 +1,44 @@
+﻿@model Hospital.Models.Account
+
+@{
+	ViewBag.Title = "Account Login";
+	string ReturnUrl= ViewBag.ReturnUrl;
+}
+
+<!-- user loging form -->
+<h2 class="page-header">User Login</h2>
+
+@using(@Html.BeginForm("Login", "Account", FormMethod.Post, new { @role= "form", @class= "form-signin form-horizontal" })) {
+	@Html.AntiForgeryToken()
+
+    <!-- taking in the username to login -->
+	<!--validation for user input-->
+    <div class="form-group">
+		@Html.LabelFor(model => model.Username, new { @class= "col-md-2 control-label" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.Username, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Username, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+    
+    <!-- taking in the the password to login-->
+    <!--validation for user input-->
+	<div class="form-group">
+		@Html.LabelFor(model => model.Password, new { @class= "col-md-2 control-label" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.Password, new { @class= "form-control" })
+			@Html.ValidationMessageFor(model => model.Password, "", new { @class= "alert-danger" })
+		</div>
+	</div>
+    
+    <!--creating a button to submit value and adding bootstrap style-->
+    
+	<div class="form-group">
+		<div class="col-md-6 col-sm-offset-2">
+			<input type="submit" value="Login" class="btn btn-primary" />
+			@Html.ValidationMessage("message", new { @class= "alert-danger" })
+		</div>
+	</div>
+	@Html.Hidden("ReturnUrl", ReturnUrl)
+}
+

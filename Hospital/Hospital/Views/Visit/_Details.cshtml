@@ -1,0 +1,40 @@
+﻿@model Hospital.Models.Visit
+
+<h2 class="page-header">
+	<small>@ViewBag.Action</small>
+	@Html.DisplayNameFor(model => model.Id) @Html.DisplayFor(model => model.Id)
+</h2>
+
+<dl class="dl-horizontal text-med">
+	<dt>@Html.DisplayNameFor(model => model.PatientType)</dt>
+	<dd>
+		@Html.DisplayName(Model.PatientType? "In": "Out")
+	</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Patient.Name)</dt>
+	<dd>@Html.DisplayFor(model => model.Patient.Name)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Doctor.Name)</dt>
+	<dd>@Html.DisplayFor(model => model.Doctor.Name)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Bed.Name)</dt>
+	<dd>@Html.DisplayName(Model.BedId!= null? Model.Bed.Name: "n/a")</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.DateOfVisit)</dt>
+	<dd>@Html.DisplayFor(model => model.DateOfVisit)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.DateOfDischarge)</dt>
+	<dd>
+		@Html.DisplayName(Model.DateOfDischarge!= null?
+			Model.DateOfDischarge.ToString(): "n/a")
+	</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Symptoms)</dt>
+	<dd>@Html.DisplayFor(model => model.Symptoms)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Disease)</dt>
+	<dd>@Html.DisplayFor(model => model.Disease)</dd>
+
+	<dt>@Html.DisplayNameFor(model => model.Treatment)</dt>
+	<dd>@Html.DisplayFor(model => model.Treatment)</dd>
+</dl>

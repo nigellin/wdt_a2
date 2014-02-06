@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Hospital.Models.Patient>
+@{
+    ViewBag.Title = "Doctor History";
+}
+
+<h2>History</h2>
+
+@Html.Partial("_Details", ViewData["Doctor"])
+
+@Html.Partial("_PatientList", Model)
+
+@Html.ActionLink("Back to list", "Index")

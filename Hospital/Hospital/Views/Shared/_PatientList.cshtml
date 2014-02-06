@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Hospital.Models.Patient>
+
+@Html.ValidationSummary()
+
+<br />
+<!--view to list patient and patient deatils-->
+
+@if(Model== null){
+}else if(Model.Count()< 1) {
+	<div class="validation-summary-errors">No patients been found</div>
+}else{
+    <!--creating a table with the patient deatails and patients-->
+	<table class="table table-striped">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayName("Actions")
+			</th>
+		</tr>
+
+		@foreach(var item in Model) {
+			<tr>
+				<td>
+					@Html.DisplayFor(ModelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(ModelItem => item.Name)
+				</td>
+				<td>
+                    <!--links to navigate and edit deatils-->
+					@Html.ActionLink("View", "Details", new { id=item.Id }) |
+					@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+					@Html.ActionLink("Delete", "Delete", new { id=item.Id })
+					&nbsp;&nbsp;&nbsp;
+                    @if(item.Visits.Where(v => !v.IsPay).Count() == 1){
+                        @Html.ActionLink("Discharge", "Discharge", new { id=item.Id })
+                    }
+				</td>
+			</tr>
+		}
+
+	</table>
+}

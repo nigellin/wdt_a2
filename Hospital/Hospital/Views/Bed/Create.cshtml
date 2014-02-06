@@ -1,0 +1,17 @@
+﻿@model Hospital.Models.Bed
+
+<!--viewbag passes data from controller to view-->
+@{
+    ViewBag.Title		= "Create New Bed";
+	ViewBag.HeaderText	= "Bed";
+	ViewBag.Action= ViewBag.ButtonValue= "Create";
+}
+
+<!-- creates partial view from _form and creates a back to list link-->
+@Html.Partial("_Form")
+@Html.ActionLink("Back to List", "Index")
+
+<!-- using scripts that follow the path-->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

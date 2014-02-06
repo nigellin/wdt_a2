@@ -1,0 +1,20 @@
+﻿@model Hospital.Models.Doctor
+
+<!--View docotor details data passed from the controller to the view-->
+@{
+    ViewBag.Title = "View Doctor Details";
+	ViewBag.Action= "View";
+}
+
+@Html.Partial("_Details")
+
+<!-- links on page to navigate-->
+<div class="btn-group col-sm-offset-1">
+	@Html.ActionLink("Edit", "Edit", new { id=Model.Id }, new { @class="btn btn-primary" })
+	@Html.ActionLink("Delete", "Delete", new { id= Model.Id }, new { @class="btn btn-danger" })
+</div>
+
+<br />
+<br />
+<!--another link to navigate back to list-->
+@Html.ActionLink("Back to List", "Index")

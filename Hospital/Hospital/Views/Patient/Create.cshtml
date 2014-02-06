@@ -1,0 +1,18 @@
+﻿@model Hospital.Models.Patient
+
+<!--create links to create new patient -->
+@{
+    ViewBag.Title		= "Create New Patient";
+	ViewBag.HeaderText	= "Patient";
+	ViewBag.Action= ViewBag.ButtonValue= "Create";
+}
+
+<!--applying a partial view to the page-->
+@Html.Partial("_Form")
+<!--applying some links to naivgate-->
+@Html.ActionLink("Back to List", "Index")
+
+@section Scripts {
+    <!--specifying path to jquery script-->
+    @Scripts.Render("~/bundles/jqueryval")
+}
